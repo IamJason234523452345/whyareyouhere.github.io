@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basketball Game</title>
+  
+  <style>
+    #basket {
+      width: 50px; 
+      height: 100px;
+      border: 1px solid black;
+      position: absolute;
+      left: 50%;
+      margin-left: -25px;
+    }
+    
+    #ball {
+      width: 50px;
+      height: 50px;
+      border-radius: 25px; 
+      background: orange;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -25px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="basket"></div>
+  
+  <div id="ball"></div>
+
+  <script>
+    const basket = document.getElementById("basket");
+    const ball = document.getElementById("ball");
+    
+    let score = 0;
+    
+    function resetBall() {
+      ball.style.top = "0px";
+    }
+    
+    document.addEventListener("keydown", function(event) {
+      if(event.code === "Space") {
+        resetBall();
+        
+        let ballTop = parseInt(ball.style.top);
+        let newBallTop = ballTop + 10; 
+        ball.style.top = newBallTop + "px";
+        
+        if(newBallTop >= basket.offsetTop) {
+          score++;
+          resetBall();
+          alert("Score: " + score);
+        }
+      }
+    });
+    
+  </script>
+
+</body>
+</html>
